@@ -251,6 +251,16 @@ public class MapredLocalTask extends Task<MapredLocalWork> implements Serializab
 
       LOG.info("Executing: " + cmdLine);
 
+      boolean runningViaChild = !ShimLoader.getHadoopShims().isLocalMode(conf) ||
+          conf.getBoolVar(HiveConf.ConfVars.SUBMITVIACHILD);
+
+      if(!runningViaChild) {
+        // we are not running this mapred task via child jvm
+        // so directly invoke ExecDriver
+        return ExecDriver.doMain(new String[] {"-localtask", "-plan", planPath.toString(), "-jobconffile",
+                                               hiveConfArgs.split(" ")[2]});
+      }
+
       // Run ExecDriver in another JVM
       executor = Runtime.getRuntime().exec(cmdLine, env, new File(workDir));
 
