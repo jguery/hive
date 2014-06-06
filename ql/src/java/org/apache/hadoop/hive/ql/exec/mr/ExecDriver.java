@@ -614,9 +614,8 @@ public class ExecDriver extends Task<MapredWork> implements Serializable, Hadoop
     }
   }
 
-  @SuppressWarnings("unchecked")
-  public static void main(String[] args) throws IOException, HiveException {
 
+  public static int doMain(String[] args) throws IOException, HiveException {
     String planFileName = null;
     String jobConfFileName = null;
     boolean noLog = false;
@@ -739,7 +738,12 @@ public class ExecDriver extends Task<MapredWork> implements Serializable, Hadoop
       ExecDriver ed = new ExecDriver(plan, conf, isSilent);
       ret = ed.execute(new DriverContext());
     }
+    return ret;
+  }
 
+  @SuppressWarnings("unchecked")
+  public static void main(String[] args) throws IOException, HiveException {
+    int ret = doMain(args);
     if (ret != 0) {
       System.exit(ret);
     }
