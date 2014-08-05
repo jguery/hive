@@ -23,9 +23,9 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <groupId>com.continuuity</groupId>
+  <groupId>co.cask.cdap</groupId>
   <artifactId>hive-exec</artifactId>
-  <version>0.13.0-continuuity-2.4.0-SNAPSHOT</version>
+  <version>0.13.0</version>
   <packaging>jar</packaging>
   <name>Hive Query Language</name>
 
