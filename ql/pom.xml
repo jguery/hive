@@ -576,12 +576,10 @@
   <distributionManagement>
     <repository>
       <id>nexus</id>
-      <name>continuuity-internal</name>
-      <url>https://repository.continuuity.com/service/local/staging/deploy/maven2</url>
+      <url>https://repository.continuuity.com/content/repositories/releases-public</url>
     </repository>
     <snapshotRepository>
       <id>snapshots</id>
-      <name>Internal Releases</name>
       <url>https://repository.continuuity.com/content/repositories/snapshots/</url>
     </snapshotRepository>
   </distributionManagement>
